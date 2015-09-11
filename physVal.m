@@ -393,14 +393,14 @@ classdef physVal < handle
        
        %%% this function expands the unit to SI base units
        function out=SIexpand(input)
-           units={'C',   'F',                  'J',          'ohm',             'T',           'V'};
-           base ={'A*s', 's^4*A^2*m^-2*kg^-1', 'kg*m^2*s^-1','kg*m^2*s^-3*A^-2','kg*s^-2*A^-1','kg*m^2*s^-3*A^-1'};
+           units={'Hz',   'C',   'F',                  'J',          'ohm',             'T',           'V'};
+           base ={'s^-1', 'A*s', 's^4*A^2*m^-2*kg^-1', 'kg*m^2*s^-1','kg*m^2*s^-3*A^-2','kg*s^-2*A^-1','kg*m^2*s^-3*A^-1'};
            out=subs(input,units,base);
        end
        
        function out=SIcollapse(input)
-           units={'C',   'F',      'F',                  'J',          'ohm',             'T',           'V',               'm^2*V*s'};
-           base ={'A*s', 'C*V^-1', 's^4*A^2*m^-2*kg^-1', 'kg*m^2*s^-1','kg*m^2*s^-3*A^-2','kg*s^-2*A^-1','kg*m^2*s^-3*A^-1','kg*m^4*A^-1*s^-2'};
+           units={'C',   'F',      'F',                  'J',          'ohm',             'T',           'V',               'm^2*V*s',         'Hz'};
+           base ={'A*s', 'C*V^-1', 's^4*A^2*m^-2*kg^-1', 'kg*m^2*s^-1','kg*m^2*s^-3*A^-2','kg*s^-2*A^-1','kg*m^2*s^-3*A^-1','kg*m^4*A^-1*s^-2','s^-1'};
            out=subs(input,flip(base),flip(units));
        end  
        
